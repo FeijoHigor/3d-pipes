@@ -1,4 +1,6 @@
+import { useState } from "react";
 import type { Pipeline } from "../types";
+import { buildAllPrompts, exportAllPromptsAsText } from "../lib/promptBuilder";
 
 interface Props {
   pipeline: Pipeline;
@@ -6,30 +8,38 @@ interface Props {
 }
 
 export default function PromptPreview({ pipeline, allData }: Props) {
-  let prompt = pipeline.promptBase;
+  const prompts = buildAllPrompts(pipeline, allData);
+  const [copied, setCopied] = useState(false);
 
-  // Replace placeholders with actual data
-  Object.entries(allData).forEach(([key, value]) => {
-    if (typeof value === "string") {
-      prompt = prompt.replace(new RegExp(`\\{${key}\\}`, "g"), value);
-    }
-  });
+  async function handleCopy() {
+    const text = exportAllPromptsAsText(pipeline, allData);
+    await navigator.clipboard.writeText(text);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  }
+
+  // Show a summary with the first prompt as example
+  const example = prompts[0];
 
   return (
     <div className="mb-6 p-4 bg-zinc-800/50 rounded-lg border border-zinc-700">
-      <p className="text-xs text-zinc-500 font-mono mb-2">PROMPT BASE</p>
-      <p className="text-sm text-zinc-300 leading-relaxed italic">"{prompt}"</p>
-      <div className="mt-3 pt-3 border-t border-zinc-700">
-        <p className="text-xs text-zinc-500 font-mono mb-1.5">REGRAS 3D</p>
-        <ul className="space-y-1">
-          {pipeline.promptRules.map((rule, i) => (
-            <li key={i} className="text-xs text-zinc-400 flex items-start gap-1.5">
-              <span className="text-primary-light mt-0.5">•</span>
-              {rule}
-            </li>
-          ))}
-        </ul>
+      <div className="flex items-center justify-between mb-2">
+        <p className="text-xs text-zinc-500 font-mono">PROMPT FINAL (exemplo: {example.angle})</p>
+        <button
+          onClick={handleCopy}
+          className="text-xs text-zinc-400 hover:text-primary-light transition-colors cursor-pointer"
+        >
+          {copied ? "✓ Copiado!" : "📋 Copiar todos"}
+        </button>
       </div>
+      <pre className="text-xs text-zinc-300 leading-relaxed whitespace-pre-wrap font-mono max-h-40 overflow-y-auto">
+        {example.prompt}
+      </pre>
+      {pipeline.angles.length > 1 && (
+        <p className="text-[11px] text-zinc-500 mt-2">
+          + {pipeline.angles.length - 1} prompt(s) para os outros ângulos
+        </p>
+      )}
     </div>
   );
 }
