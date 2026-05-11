@@ -3,7 +3,7 @@ import seedPipelines from "../data/pipelines.json";
 
 const STORAGE_KEY = "3d-pipes:pipelines";
 const VERSION_KEY = "3d-pipes:version";
-const CURRENT_VERSION = 1;
+const CURRENT_VERSION = 2;
 
 /**
  * PipelineStore centralizes all pipeline persistence.

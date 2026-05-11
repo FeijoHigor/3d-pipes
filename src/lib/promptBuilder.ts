@@ -1,11 +1,28 @@
 import type { Pipeline } from "../types";
 
 const GLOBAL_3D_RULES = [
-  "Neutral white or light gray background, no projected shadows",
-  "Diffuse uniform lighting, no strong specular reflections",
-  "Object centered in frame, no cropping at edges",
-  "No 2D elements, collages, or graphic overlays",
-  "Consistent style, color palette, and detail level across all views",
+  // === Camera / background ===
+  "Pure white background (#FFFFFF), no shadows, no reflections, no floor plane",
+  "Diffuse uniform lighting from all sides, no directional shadows or specular highlights",
+  "Object perfectly centered in frame with small margin, no cropping at edges",
+  "No 2D elements, text overlays, watermarks, or UI artifacts",
+  // === Color constraints (printer has 4 filament slots) ===
+  "STRICT: Maximum 4 dominant colors in the entire object. Small accent details (eyes, tiny logos) may use a 5th color if the area is very small and paintable by hand",
+  "Flat solid colors only, NO gradients, NO color transitions, NO shading baked into the surface",
+  "Each color region must have clean sharp boundaries, clearly separable from adjacent colors",
+  "High contrast between adjacent color regions so a slicer can distinguish them",
+  // === Style (printability) ===
+  "Cartoon / stylized / toy aesthetic — NOT photorealistic. Think vinyl toy, Funko Pop, or clay figurine",
+  "Smooth simplified surfaces — no realistic skin pores, fur strands, fabric weave, or wood grain",
+  "All features must be chunky and thick (minimum ~2mm visual thickness), nothing thin or fragile",
+  "No tiny holes, slits, or negative details smaller than 2mm",
+  "No floating or disconnected parts — everything must be physically attached to the main body",
+  // === Pose / geometry ===
+  "Compact pose with limbs close to the body, no extended arms or fingers spread out",
+  "Flat stable base so the model can stand upright on a table",
+  "Clean simple silhouette — avoid overly intricate outlines",
+  // === Consistency ===
+  "Identical character, proportions, colors, and style across ALL angle views — must look like the same object rotated",
 ];
 
 /**
@@ -47,10 +64,10 @@ export function buildPromptForAngle(
     "",
     angleInstruction,
     "",
-    "Style rules:",
+    "Pipeline style rules:",
     pipelineRules,
     "",
-    "3D reconstruction rules:",
+    "3D printing & reconstruction rules (MUST follow all):",
     globalRules,
   ].join("\n");
 }

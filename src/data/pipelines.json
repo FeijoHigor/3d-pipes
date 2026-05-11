@@ -8,12 +8,16 @@
     "outputFormat": ".stl / .glb",
     "imageCount": 3,
     "angles": ["Frontal (0°)", "Lateral (90°)", "3/4 Frontal (45°)"],
-    "promptBase": "Colorful 3D figurine of a {pet_type}, cute chibi proportions, standing on a cylindrical base with the name \"{pet_name}\" engraved, neutral white background, diffuse lighting, consistent style, no shadows, no background elements",
+    "promptBase": "3D printable cartoon figurine of a {pet_type}, chibi proportions with oversized round head and small stubby body, standing on a simple cylindrical pedestal base with the name \"{pet_name}\" engraved on the front. Vinyl toy aesthetic, smooth matte surfaces, flat solid colors with no gradients. Use only 3-4 dominant colors: one for the pet body, one for the base, one for accent details, and one for the name text. No fur texture, no realistic details — simplified cartoon shapes only. Clean sharp color boundaries between regions.",
     "promptRules": [
-      "Manter proporções chibi (cabeça grande, corpo compacto)",
-      "Base cilíndrica com nome legível",
-      "Cores vibrantes e acabamento fosco",
-      "Pet centralizado na base"
+      "Máximo 4 cores dominantes: corpo do pet + base + detalhe + texto",
+      "Estilo vinyl toy / clay figurine — superfícies lisas sem textura de pelo ou pele",
+      "Proporções chibi: cabeça ~50% do tamanho total, corpo compacto e arredondado",
+      "Base cilíndrica simples com nome em relevo (não gravado fundo demais)",
+      "Orelhas e cauda grossas e simplificadas, sem partes finas que quebrem",
+      "Olhos como formas simples (círculos ou ovals), pintáveis — podem ser preto",
+      "Patas juntas ao corpo, sem dedos separados",
+      "Sem furos, partes soltas ou cavidades internas"
     ],
     "steps": [
       {
@@ -71,12 +75,16 @@
     "outputFormat": ".stl",
     "imageCount": 2,
     "angles": ["Frontal (0°)", "Traseira (180°)"],
-    "promptBase": "Caricature 3D keychain of a person, exaggerated head with tiny body, flat medallion shape with 3mm thickness, small hole at top for keyring, neutral background, consistent style, diffuse lighting",
+    "promptBase": "3D printable cartoon caricature keychain of a person, flat medallion shape with 3-4mm uniform thickness, designed as a single solid piece. Exaggerated head taking 70% of the design with tiny chibi body below. {style} style expression. Smooth flat surfaces with cel-shaded cartoon look, no realistic skin texture. Maximum 4 flat solid colors: skin tone, hair color, clothing color, and background/border color. Small hole at top center for keyring attachment. Clean simple outlines, thick features, no thin lines or tiny details.",
     "promptRules": [
-      "Formato flat tipo medalhão com 3mm de espessura",
-      "Furo no topo para argola de chaveiro",
-      "Traços exagerados estilo caricatura",
-      "Proporção cabeça grande, corpo minúsculo"
+      "Máximo 4 cores: pele + cabelo + roupa + borda/fundo do medalhão",
+      "Olhos e boca como formas simples de cartoon — pintáveis à mão se necessário",
+      "Formato medalhão flat com 3-4mm de espessura uniforme",
+      "Furo no topo com diâmetro mínimo de 4mm (precisa caber a argola)",
+      "Sem detalhes em relevo menores que 1.5mm — ficam imperceptíveis",
+      "Bordas arredondadas para não machucar ao segurar",
+      "Traços faciais exagerados e simplificados, estilo caricatura",
+      "Peça única sólida, sem partes destacáveis"
     ],
     "steps": [
       {
@@ -132,12 +140,17 @@
     "outputFormat": ".glb / .stl",
     "imageCount": 4,
     "angles": ["Frontal (0°)", "Lateral Esquerda (90°)", "Traseira (180°)", "Lateral Direita (270°)"],
-    "promptBase": "Chibi 3D figurine of a person, 1:3 head-to-body ratio, wearing {outfit_style} clothes, cute collectible toy style, neutral background, diffuse uniform lighting, no shadows, consistent details",
+    "promptBase": "3D printable chibi figurine of a person in the style of a collectible vinyl toy (Funko Pop aesthetic), 1:3 head-to-body ratio with oversized round head and small rounded body. Wearing {outfit_style} outfit in flat solid colors. Smooth matte plastic surfaces, no realistic fabric texture or skin pores. Use only 3-4 dominant colors: skin tone, primary clothing color, secondary clothing/hair color, and one accent color. Simple dot or oval eyes (black, paintable by hand). Compact standing pose with arms close to body, feet together on a small round base.",
     "promptRules": [
-      "Proporção 1:3 cabeça para corpo",
-      "Estilo bonequinho colecionável (Funko Pop-like)",
-      "Sem detalhes muito finos que não imprimem bem",
-      "Pose amigável e relaxada"
+      "Máximo 4 cores: pele + roupa principal + cabelo/roupa secundária + detalhe",
+      "Olhos como pontos ou ovals pretos — área pequena, pintável à mão",
+      "Estilo Funko Pop / vinyl toy: superfícies lisas sem textura realista",
+      "Proporção 1:3 cabeça para corpo, formas arredondadas e grossas",
+      "Braços colados ao corpo, sem dedos separados, mãos como luvas",
+      "Cabelo como formas sólidas simplificadas, sem fios individuais",
+      "Sem acessórios finos que quebrem (óculos grossos ok, antena fina não)",
+      "Base circular simples e plana para estabilidade",
+      "Sem roupas com estampas — cores sólidas only"
     ],
     "steps": [
       {
