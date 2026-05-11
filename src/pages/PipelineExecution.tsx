@@ -1,7 +1,6 @@
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { useState, useMemo } from "react";
-import pipelines from "../data/pipelines";
-import type { StepState } from "../types";
+import type { Pipeline, StepState } from "../types";
 import StepUpload from "../components/steps/StepUpload";
 import StepInput from "../components/steps/StepInput";
 import StepGenerate from "../components/steps/StepGenerate";
@@ -11,10 +10,14 @@ import StepOutput from "../components/steps/StepOutput";
 import StepSidebar from "../components/StepSidebar";
 import PromptPreview from "../components/PromptPreview";
 
-export default function PipelineExecution() {
+interface Props {
+  findPipeline: (id: string) => Pipeline | undefined;
+}
+
+export default function PipelineExecution({ findPipeline }: Props) {
   const { pipelineId } = useParams<{ pipelineId: string }>();
   const navigate = useNavigate();
-  const pipeline = pipelines.find((p) => p.id === pipelineId);
+  const pipeline = pipelineId ? findPipeline(pipelineId) : undefined;
 
   const [currentStep, setCurrentStep] = useState(0);
   const [stepStates, setStepStates] = useState<StepState[]>(() =>

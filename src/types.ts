@@ -24,7 +24,10 @@ export interface Pipeline {
   outputFormat: string;
   promptBase: string;
   promptRules: string[];
+  imageCount: number;
+  angles: string[];
   steps: PipelineStep[];
+  isCustom?: boolean;
 }
 
 export interface StepState {

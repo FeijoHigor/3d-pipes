@@ -1,10 +1,12 @@
 import { useState } from "react";
 import type { StepProps } from "./types";
 
-const MOCK_ANGLES = ["Frontal (0°)", "Lateral (90°)", "3/4 Frontal (45°)"];
-
-export default function StepReview({ stepState, onComplete }: StepProps) {
-  const [approved, setApproved] = useState<boolean[]>([true, true, true]);
+export default function StepReview({ stepState, onComplete, pipeline }: StepProps) {
+  const angles = pipeline.angles;
+  const imageCount = pipeline.imageCount;
+  const [approved, setApproved] = useState<boolean[]>(
+    () => Array(imageCount).fill(true)
+  );
   const isCompleted = stepState.status === "completed";
 
   function toggleApproval(index: number) {
@@ -20,8 +22,8 @@ export default function StepReview({ stepState, onComplete }: StepProps) {
 
   return (
     <div>
-      <div className="grid grid-cols-3 gap-3 mb-4">
-        {MOCK_ANGLES.map((angle, i) => (
+      <div className={`grid gap-3 mb-4 ${imageCount <= 2 ? 'grid-cols-2' : imageCount === 3 ? 'grid-cols-3' : 'grid-cols-2 sm:grid-cols-4'}`}>
+        {angles.map((angle, i) => (
           <div
             key={i}
             onClick={() => toggleApproval(i)}

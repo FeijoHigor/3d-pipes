@@ -9,6 +9,8 @@ const pipelines: Pipeline[] = [
     icon: "🐾",
     style: "Escultura colorida estilo estatueta, acabamento fosco",
     outputFormat: ".stl / .glb",
+    imageCount: 3,
+    angles: ["Frontal (0°)", "Lateral (90°)", "3/4 Frontal (45°)"],
     promptBase:
       "Colorful 3D figurine of a {pet_type}, cute chibi proportions, standing on a cylindrical base with the name \"{pet_name}\" engraved, neutral white background, diffuse lighting, consistent style, no shadows, no background elements",
     promptRules: [
@@ -99,6 +101,8 @@ const pipelines: Pipeline[] = [
     icon: "😄",
     style: "Caricatura com cabeça exagerada, corpo minúsculo, formato flat com espessura para impressão",
     outputFormat: ".stl",
+    imageCount: 2,
+    angles: ["Frontal (0°)", "Traseira (180°)"],
     promptBase:
       "Caricature 3D keychain of a person, exaggerated head with tiny body, flat medallion shape with 3mm thickness, small hole at top for keyring, neutral background, consistent style, diffuse lighting",
     promptRules: [
@@ -176,6 +180,8 @@ const pipelines: Pipeline[] = [
     icon: "🧸",
     style: "Chibi com proporções 1:3, cabeça grande, corpo curto, estilo estatueta",
     outputFormat: ".glb / .stl",
+    imageCount: 4,
+    angles: ["Frontal (0°)", "Lateral Esquerda (90°)", "Traseira (180°)", "Lateral Direita (270°)"],
     promptBase:
       "Chibi 3D figurine of a person, 1:3 head-to-body ratio, wearing {outfit_style} clothes, cute collectible toy style, neutral background, diffuse uniform lighting, no shadows, consistent details",
     promptRules: [

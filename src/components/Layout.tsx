@@ -9,7 +9,15 @@ export default function Layout() {
             <span className="text-2xl">🧊</span>
             <span>3D Pipeline</span>
           </Link>
-          <span className="text-xs text-zinc-500 font-mono">MVP</span>
+          <div className="flex items-center gap-4">
+            <Link
+              to="/create"
+              className="text-sm text-zinc-400 hover:text-primary-light transition-colors"
+            >
+              + Criar Pipeline
+            </Link>
+            <span className="text-xs text-zinc-500 font-mono">MVP</span>
+          </div>
         </div>
       </header>
       <main className="max-w-5xl mx-auto px-6 py-8">

@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import type { StepProps } from "./types";
 
-const MOCK_ANGLES = ["Frontal (0°)", "Lateral (90°)", "3/4 Frontal (45°)"];
-
-export default function StepGenerate({ stepState, onComplete }: StepProps) {
+export default function StepGenerate({ stepState, onComplete, pipeline }: StepProps) {
+  const angles = pipeline.angles;
+  const imageCount = pipeline.imageCount;
   const [progress, setProgress] = useState(0);
   const [generating, setGenerating] = useState(false);
   const [generated, setGenerated] = useState(stepState.status === "completed");
@@ -39,7 +39,7 @@ export default function StepGenerate({ stepState, onComplete }: StepProps) {
         <div className="text-center py-8">
           <div className="text-5xl mb-4">🤖</div>
           <p className="text-sm text-zinc-400 mb-6">
-            Pronto para gerar as 3 imagens de referência em ângulos diferentes.
+            Pronto para gerar as {imageCount} imagens de referência em ângulos diferentes.
           </p>
           <button
             onClick={startGeneration}
@@ -64,11 +64,13 @@ export default function StepGenerate({ stepState, onComplete }: StepProps) {
               />
             </div>
             <p className="text-xs text-zinc-500 mt-3 text-center">
-              {progress < 33
-                ? `Gerando ${MOCK_ANGLES[0]}...`
-                : progress < 66
-                ? `Gerando ${MOCK_ANGLES[1]}...`
-                : `Gerando ${MOCK_ANGLES[2]}...`}
+              {(() => {
+                const idx = Math.min(
+                  Math.floor((progress / 100) * imageCount),
+                  imageCount - 1
+                );
+                return `Gerando ${angles[idx]}...`;
+              })()}
             </p>
           </div>
         </div>
@@ -76,8 +78,8 @@ export default function StepGenerate({ stepState, onComplete }: StepProps) {
 
       {generated && (
         <div>
-          <div className="grid grid-cols-3 gap-3 mb-6">
-            {MOCK_ANGLES.map((angle, i) => (
+          <div className={`grid gap-3 mb-6 ${imageCount <= 2 ? 'grid-cols-2' : imageCount === 3 ? 'grid-cols-3' : 'grid-cols-2 sm:grid-cols-4'}`}>
+            {angles.map((angle, i) => (
               <div
                 key={i}
                 className="bg-zinc-800 rounded-lg p-4 text-center border border-zinc-700"
