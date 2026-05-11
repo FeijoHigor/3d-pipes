@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import type { Pipeline, PipelineInput } from "../types";
+import { usePipelineContext } from "../context/PipelineContext";
 
 const ANGLE_PRESETS: Record<string, string[]> = {
   "2": ["Frontal (0°)", "Traseira (180°)"],
@@ -14,10 +15,6 @@ const ICON_OPTIONS = ["🎨", "🐾", "😄", "🧸", "🎭", "👤", "🎮", "�
 
 const OUTPUT_OPTIONS = [".stl", ".glb", ".obj", ".stl / .glb", ".glb / .obj"];
 
-interface Props {
-  onSave: (pipeline: Pipeline) => void;
-}
-
 interface InputField {
   id: string;
   label: string;
@@ -27,8 +24,9 @@ interface InputField {
   required: boolean;
 }
 
-export default function CreatePipeline({ onSave }: Props) {
+export default function CreatePipeline() {
   const navigate = useNavigate();
+  const { addPipeline } = usePipelineContext();
 
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -188,7 +186,7 @@ export default function CreatePipeline({ onSave }: Props) {
       isCustom: true,
     };
 
-    onSave(pipeline);
+    addPipeline(pipeline);
     navigate("/");
   }
 

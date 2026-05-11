@@ -1,12 +1,9 @@
 import { Link } from "react-router-dom";
-import type { Pipeline } from "../types";
+import { usePipelineContext } from "../context/PipelineContext";
 
-interface Props {
-  pipelines: Pipeline[];
-  onRemove: (id: string) => void;
-}
+export default function Home() {
+  const { pipelines, removePipeline } = usePipelineContext();
 
-export default function Home({ pipelines, onRemove }: Props) {
   return (
     <div>
       <div className="flex items-center justify-between mb-10">
@@ -62,7 +59,7 @@ export default function Home({ pipelines, onRemove }: Props) {
                 onClick={(e) => {
                   e.preventDefault();
                   if (confirm(`Remover "${pipeline.name}"?`)) {
-                    onRemove(pipeline.id);
+                    removePipeline(pipeline.id);
                   }
                 }}
                 className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 text-zinc-500 hover:text-red-400 transition-all text-xs cursor-pointer bg-zinc-900/80 px-2 py-1 rounded"
