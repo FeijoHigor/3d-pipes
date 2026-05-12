@@ -75,16 +75,19 @@
     "outputFormat": ".stl",
     "imageCount": 2,
     "angles": ["Frontal (0°)", "Traseira (180°)"],
-    "promptBase": "3D printable cartoon caricature keychain of a person, flat medallion shape with 3-4mm uniform thickness, designed as a single solid piece. Exaggerated head taking 70% of the design with tiny chibi body below. {style} style expression. Smooth flat surfaces with cel-shaded cartoon look, no realistic skin texture. Maximum 4 flat solid colors: skin tone, hair color, clothing color, and background/border color. Small hole at top center for keyring attachment. Clean simple outlines, thick features, no thin lines or tiny details.",
+    "promptBase": "3D printable cute chibi caricature keychain of a person, shaped as a smooth rounded-rectangle medallion (portrait orientation, aspect ratio ~2:3, corners with large radius) with 4mm uniform thickness and a 2mm raised border frame all around the edge. The character is embossed/raised from the medallion surface as a bas-relief, NOT floating or cut-out. {style} style expression with big sparkling round eyes and a friendly smile. Chibi proportions: oversized round head (~60% of medallion area) with a tiny simplified body below, stubby arms close to body, no fingers. Smooth glossy toy-like surfaces, cel-shaded cartoon look, think Nendoroid or rubber charm aesthetic. Exactly 4 flat solid colors with sharp clean boundaries: skin tone, hair color, one clothing color, and white for the medallion border/background. Small reinforced loop at top center for keyring attachment (loop is part of the border, not a separate thin ring). Clean thick outlines baked into the surface, no thin lines or micro details.",
     "promptRules": [
-      "Máximo 4 cores: pele + cabelo + roupa + borda/fundo do medalhão",
-      "Olhos e boca como formas simples de cartoon — pintáveis à mão se necessário",
-      "Formato medalhão flat com 3-4mm de espessura uniforme",
-      "Furo no topo com diâmetro mínimo de 4mm (precisa caber a argola)",
-      "Sem detalhes em relevo menores que 1.5mm — ficam imperceptíveis",
-      "Bordas arredondadas para não machucar ao segurar",
-      "Traços faciais exagerados e simplificados, estilo caricatura",
-      "Peça única sólida, sem partes destacáveis"
+      "EXATAMENTE 4 cores flat: pele + cabelo + roupa + branco (borda/fundo do medalhão)",
+      "Formato medalhão retângulo-arredondado (retrato ~2:3) com borda branca de 2mm ao redor",
+      "Espessura uniforme de 4mm, personagem em baixo-relevo elevado (bas-relief) sobre a superfície",
+      "Olhos grandes redondos estilo anime/chibi com brilho — traço fofo, NÃO caricatura exagerada",
+      "Corpo minúsculo e simplificado abaixo da cabeça, braços curtos colados ao corpo, sem dedos",
+      "Cabelo como blocos sólidos simplificados, sem cachos ou fios individuais",
+      "Furo/loop no topo integrado à borda com espessura mínima de 3mm (precisa caber argola)",
+      "Bordas todas arredondadas (sem cantos vivos) para ser confortável de segurar",
+      "Sem partes soltas, vazadas ou destacáveis — peça 100% sólida e única",
+      "Expressão sempre simpática e amigável, estilo charm/rubber strap japonês",
+      "Barba e bigode (se houver) como formas sólidas simples, nunca com textura detalhada"
     ],
     "steps": [
       {
